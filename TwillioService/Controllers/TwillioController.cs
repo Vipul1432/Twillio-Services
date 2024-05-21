@@ -18,6 +18,16 @@ namespace TwillioService.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Endpoint to send an SMS message asynchronously.
+        /// </summary>
+        /// <remarks>
+        /// This method receives an SMS request via HTTP POST, sends the SMS using the SMS service, and returns the appropriate HTTP response.
+        /// If the message is sent successfully, it returns an Ok result. If the message fails to send, it returns a BadRequest response.
+        /// If an exception occurs during the process, it returns an Internal Server Error response.
+        /// </remarks>
+        /// <param name="request">The SMS request DTO containing the recipient's phone number and the message body.</param>
+        /// <returns>An asynchronous action result representing the outcome of the SMS send operation.</returns>
         [HttpPost("send-sms")]
         public async Task<IActionResult> SendSmsAsync([FromBody] SmsRequestDto request)
         {

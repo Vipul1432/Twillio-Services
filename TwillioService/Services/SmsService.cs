@@ -28,6 +28,18 @@ namespace TwillioService.Services
             }
         }
 
+        /// <summary>
+        /// Asynchronously sends an SMS message to the specified recipient using the Twilio API.
+        /// </summary>
+        /// <param name="to">The phone number of the recipient, in E.164 format.</param>
+        /// <param name="body">The content of the SMS message.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains a boolean indicating whether the SMS was successfully sent.
+        /// </returns>
+        /// <remarks>
+        /// This method initializes the Twilio client with the account SID and auth token, then attempts to send the SMS message. 
+        /// If the message is sent successfully, it logs the success and returns true. If an error occurs, it logs the error and returns false.
+        /// </remarks>
         public async Task<bool> SendSmsAsync(string to, string body)
         {
             TwilioClient.Init(_accountSid, _authToken);
