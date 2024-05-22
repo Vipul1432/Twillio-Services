@@ -13,7 +13,16 @@ namespace TwillioService
             // Add services to the container.
             builder.Services.AddScoped<ISmsService, SmsService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddScoped<IOtpService, OtpService>();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Logging.AddConsole();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(5);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -29,7 +38,7 @@ namespace TwillioService
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSession();
             app.UseAuthorization();
 
 

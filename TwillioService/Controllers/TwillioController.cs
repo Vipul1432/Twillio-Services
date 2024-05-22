@@ -5,7 +5,7 @@ using TwillioService.Interfaces;
 
 namespace TwillioService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/twilio")]
     [ApiController]
     public class TwillioController : ControllerBase
     {

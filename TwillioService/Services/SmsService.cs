@@ -19,10 +19,10 @@ namespace TwillioService.Services
         {
             _configuration = configuration;
             _logger = logger;
-            _accountSid = _configuration["Twilio:AccountSid"];
-            _authToken = _configuration["Twilio:AuthToken"];
-            _fromNumber = _configuration["Twilio:fromNo"];
-            _fromWhatsAppNumber = _configuration["Twilio:fromWhatsAppNo"];
+            _accountSid = _configuration["Twilio:AccountSid"] ?? String.Empty;
+            _authToken = _configuration["Twilio:AuthToken"] ?? String.Empty;
+            _fromNumber = _configuration["Twilio:fromNo"] ?? String.Empty;
+            _fromWhatsAppNumber = _configuration["Twilio:fromWhatsAppNo"] ?? String.Empty;
 
             if (string.IsNullOrEmpty(_accountSid) || string.IsNullOrEmpty(_authToken) || string.IsNullOrEmpty(_fromNumber) || string.IsNullOrEmpty(_fromWhatsAppNumber))
             {

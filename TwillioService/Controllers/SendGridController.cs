@@ -4,7 +4,7 @@ using TwillioService.Interfaces;
 
 namespace TwillioService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/sendgrid")]
     [ApiController]
     public class SendGridController : ControllerBase
     {
